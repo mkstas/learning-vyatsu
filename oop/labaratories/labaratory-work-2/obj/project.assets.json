@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\learning-vyatsu\\oop\\labaratories\\labaratory-work-2\\labaratory-work-2.csproj",
+      "projectUniqueName": "C:\\Users\\sempai\\Documents\\LearningVyatSu\\oop\\labaratories\\labaratory-work-2\\labaratory-work-2.csproj",
       "projectName": "labaratory-work-2",
-      "projectPath": "D:\\learning-vyatsu\\oop\\labaratories\\labaratory-work-2\\labaratory-work-2.csproj",
+      "projectPath": "C:\\Users\\sempai\\Documents\\LearningVyatSu\\oop\\labaratories\\labaratory-work-2\\labaratory-work-2.csproj",
       "packagesPath": "C:\\Users\\sempai\\.nuget\\packages\\",
-      "outputPath": "D:\\learning-vyatsu\\oop\\labaratories\\labaratory-work-2\\obj\\",
+      "outputPath": "C:\\Users\\sempai\\Documents\\LearningVyatSu\\oop\\labaratories\\labaratory-work-2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
