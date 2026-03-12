@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.11)  10 MAR 2026 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.11)  12 MAR 2026 13:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -523,13 +523,18 @@ LaTeX Font Info:    External font `cmex7' loaded for size
 (Font)              <7> on input line 44.
  [1
 
-{c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] [2]
-<img/uml.png, id=18, 748.7975pt x 586.19pt>
+{c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] [2] [3] [4]
+Overfull \hbox (3.71095pt too wide) in paragraph at lines 146--147
+[]\T2A/cmr/m/n/14.4 SetDressing(Dressing dressing) -- ��-��-�� ���-��-��� ��-�� ��-����-��, ���-
+ []
+
+[5]
+<img/uml.png, id=30, 748.7975pt x 586.19pt>
 File: img/uml.png Graphic file (type png)
 <use img/uml.png>
-Package pdftex.def Info: img/uml.png  used on input line 80.
+Package pdftex.def Info: img/uml.png  used on input line 165.
 (pdftex.def)             Requested size: 483.69687pt x 378.65762pt.
- [3 <./img/uml.png>] [4] (./ИВТб-2301-05-00_МакаровСА_ЛР1.aux)
+ [6 <./img/uml.png>] (./ИВТб-2301-05-00_МакаровСА_ЛР1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
@@ -538,18 +543,18 @@ Package rerunfilecheck Info: File `ИВТб-2301-05-00_МакаровСА_ЛР1.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 11928 strings out of 467538
- 191430 string characters out of 5408615
- 613874 words of memory out of 5000000
- 40711 multiletter control sequences out of 15000+600000
+ 11932 strings out of 467538
+ 191500 string characters out of 5408615
+ 614874 words of memory out of 5000000
+ 40713 multiletter control sequences out of 15000+600000
  631477 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,971b,461s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,786b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
-Output written on ИВТб-2301-05-00_МакаровСА_ЛР1.pdf (4 pages, 66440 bytes).
+Output written on ИВТб-2301-05-00_МакаровСА_ЛР1.pdf (6 pages, 70117 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
+ 51 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
