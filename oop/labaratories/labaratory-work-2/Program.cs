@@ -1,5 +1,3 @@
-using labaratory_work_2.Models;
-
 namespace labaratory_work_2
 {
     internal static class Program

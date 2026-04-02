@@ -26,7 +26,7 @@ public:
 	{
 	}
 
-	Dish(std::string name, int weight, double price = 15.0)
+	Dish(std::string name, int weight, double price)
 		: _name(std::move(name))
 		, _weight(weight)
 		, _price(price)

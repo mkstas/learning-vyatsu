@@ -65,7 +65,99 @@
 \section*{\hspace{12.5mm}Решение}
 Предметная область описывает управление ассортиментом блюд в заведении общественного питания. Система позволяет хранить информацию о различных блюдах, учитывать их специфические характеристики, рассчитывать итоговую цену для клиента в зависимости от этих характеристик и выводить информацию о блюде в удобном виде.
 
-Схема структуры иерархии классов представлена в виде диаграммы классов, представленая на рисунке 1.
+Программа содержит классы <<Dish>>, представлющий базовый класс блюда,  <<Pizza>>, наследованный от <<Dish>> и представлющий класс пиццы, <<Salad>> наследованный от <<Dish>> и представлющий класс салата.
+
+Базовый класс <<Dish>> содержит:
+\begin{itemize}
+  \item[--] Поля:
+  \begin{itemize}
+    \item[--] std::string name -- название блюда, строковый тип данных;
+    \item[--] int weight -- вес блюда, целочисленный тип данных;
+    \item[--] double price -- цена блюда, формат с плавающей запятой;
+  \end{itemize}
+  \item[--] Конструкторы:
+  \begin{itemize}
+    \item[--] Dish() - задает значения полей по умолчанию;
+    \item[--] Dish(std::string name) - принимает название блюда в качестве параметра;
+    \item[--] Dish(std::string name, int weight, double price) - принимает  в качестве параметров название, вес и цену блюда;
+  \end{itemize}
+  \item[--] Геттеры/сеттеры:
+  \begin{itemize}
+    \item[--] std::string GetName() const -- возвращает название блюда;
+    \item[--] int GetWeight() const -- возвращает вес блюда;
+    \item[--] double GetPrice() const -- возвращает цену блюда;
+    \item[--] void SetName(std::string name) -- задает значение названию блюда, принимает в качестве параметра название блюда;
+    \item[--] void SetWeight(int weight) -- задает значение весу блюда,
+    принимает в качестве параметра вес блюда;
+    \item[--] void SetPrice(double price) -- задает значение цене блюда,
+    принимает в качестве параметра цену блюда;
+  \end{itemize}
+  \item[--] Абстрактные методы:
+  \begin{itemize}
+    \item[--] virtual void DisplayInfo() = 0 -- виртуальный метод, отображающий информацию о блюде, не принимает параметров;
+    \item[--] virtual double CalcFullPrice() = 0 -- виртуальный метод, возвращающий полную цену блюда.
+  \end{itemize}
+\end{itemize}
+
+Класс <<Pizza>>, наследованный от класса <<Dish>> содержит:
+\begin{itemize}
+  \item[--] Собственные поля:
+  \begin{itemize}
+    \item[--] Dough dough = Dough::Thick -- типа теста, по умолчанию Thick;
+  \end{itemize}
+  \item[--] Конструкторы:
+  \begin{itemize}
+    \item[--] Pizza() : Dish() -- задает значения полей по умолчанию;
+    \item[--] Pizza(std::string name) : Dish(name) -- принимает название пиццы в качестве параметра;
+    \item[--] Pizza(std::string name, int weight, double price) : Dish(name, weight, price) -- принимает в качестве параметров название, вес и цену пиццы;
+  \end{itemize}
+  \item[--] Геттеры/сеттеры:
+  \begin{itemize}
+    \item[--] Dough GetDough() const -- возвращает тип теста;
+    \item[--] void SetDough(Dough dough) -- задает значение типу теста, принимает в качестве параметра enum Dough (Thick, Thin);
+  \end{itemize}
+  \item[--] Переопределенные методы:
+  \begin{itemize}
+    \item[--] void DisplayInfo() override -- отображает информацию о пицце (название, тип теста, вес, цена), не принимает параметров;
+    \item[--] double CalcFullPrice() override -- возвращает полную цену в зависимости от типа теста (Thick: price * 1.5, Thin: price * 1.3), не принимает параметров;
+  \end{itemize}
+  \item[--] Собственные методы:
+  \begin{itemize}
+    \item[--] void ChangeDough() -- меняет тип теста, не принимает параметров;
+    \item[--] void CutInSlices() -- нарезает пиццу на куски, не принимает параметров;
+  \end{itemize}
+\end{itemize}
+
+Класс <<Salad>>, наследованный от класса <<Dish>> содержит:
+\begin{itemize}
+  \item[--] Собственные поля:
+  \begin{itemize}
+    \item[--] Dressing dressing = Dressing::OliveOil -- тип заправки, по умолчанию OliveOil;
+  \end{itemize}
+  \item[--] Конструкторы:
+  \begin{itemize}
+    \item[--] Salad() : Dish() -- задает значения полей по умолчанию;
+    \item[--] Salad(std::string name) : Dish(name) -- принимает название салата в качестве параметра;
+    \item[--] Salad(std::string name, int weight, double price) : Dish(name, weight, price) -- принимает в качестве параметров название, вес и цену салата;
+  \end{itemize}
+  \item[--] Геттеры/сеттеры:
+  \begin{itemize}
+    \item[--] Dressing GetDressing() const -- возвращает тип заправки;
+    \item[--] SetDressing(Dressing dressing) -- задает значение типу заправки, принимает в качестве параметра enum Dressing (OliveOil, Mayonnaise);
+  \end{itemize}
+  \item[--] Переопределенные методы:
+  \begin{itemize}
+    \item[--] void DisplayInfo() override -- отображает информацию о салате (название, тип заправки, вес, цена), не принимает параметров;
+    \item[--] double CalcFullPrice() override -- возвращает полную цену в зависимости от типа заправки (OliveOil: price * 1.4, Mayonnaise: price * 1.3), не принимает параметров;
+  \end{itemize}
+  \item[--] Собственные методы:
+  \begin{itemize}
+    \item[--] void ChangeDressing() -- меняет тип заправки, не принимает параметров;
+    \item[--] void TossWithDressing() -- перемешивает салат с заправкой, не принимает параметров;
+  \end{itemize}
+\end{itemize}
+
+Диаграмма классов представлена на рисунке 1.
 
 \pagebreak
 \begin{figure}[ht]
@@ -75,47 +167,6 @@
 \begin{center}
   Рисунок 1 – Диаграмма классов
 \end{center}
-
-Описание меотодов классов:
-\begin{itemize}
-  \item[--] Класс Dish:
-        \begin{itemize}
-          \item[--] Dish() -- конструктор, инициализирует название блюда, вес в граммах и базовую цену;
-          \item[--] Dish(string name) -- конструктор, инициализирует название блюда, вес в граммах и базовую цену;
-          \item[--] Dish(string name, int weight, double price = 15.0) -- конструктор, инициализирует название блюда, вес в граммах и базовую цену;
-          \item[--] string GetName() const -- возвращает название блюда;
-          \item[--] int GetWeight() const -- возвращает вес блюда в граммах;
-          \item[--] double GetPrice() const -- возвращает базовую цену блюда;
-          \item[--] virtual void DisplayInfo() = 0 -- виртуальный метод отображения информации;
-          \item[] virtual double GetFullPrice() = 0 -- виртуальный метод, возвращающий полную цену;
-        \end{itemize}
-  \item[--] Класс Pizza наследуется от Dish:
-        \begin{itemize}
-          \item[--] Pizza() -- конструктор, передаёт параметры в базовый класс Dish, тип теста по умолчанию — Thick;
-          \item[--] Pizza(string name) -- конструктор, передаёт параметры в базовый класс Dish, тип теста по умолчанию — Thick;
-          \item[--] Pizza(string name, int weight, double price) -- конструктор, передаёт параметры в базовый класс Dish, тип теста по умолчанию — Thick;
-          \item[--] string GetDough() const -- возвращает текстовое описание текущего типа теста;
-          \item[--] void ChangeDough() -- переключает тип теста между Thin и Thick;
-          \item[--] void CutInSlices() -- имитирует действие «нарезать пиццу на куски», выводит соответствующее сообщение;
-          \item[--] void DisplayInfo() override -- переопределённый метод, выводит информацию о пицце: название, тип теста, вес, итоговая цена;
-          \item[--] double GetFullPrice() override -- возвращает итоговую цену с учётом типа теста;
-        \end{itemize}
-  \item[--] Класс Salad наследуется от Dish:
-        \begin{itemize}
-          \item[--] Salad() -- конструктор, передаёт параметры в базовый класс Dish, заправка по умолчанию — OliveOil;
-          \item[--] Salad(string name) -- конструктор, передаёт параметры в базовый класс Dish, заправка по умолчанию — OliveOil;
-          \item[--] Salad(string name, int weight, double price) -- конструктор, передаёт параметры в базовый класс Dish, заправка по умолчанию — OliveOil;
-          \item[--] string GetDressing() const -- возвращает текстовое описание текущей заправки;
-          \item[--] void ChangeDressing() -- переключает вид заправки между OliveOil и Mayonnaise;
-          \item[--] void TossWithDressing() const -- bмитирует действие «перемешать салат с заправкой», выводит соответствующее сообщение;
-          \item[--] void DisplayInfo() override -- gереопределённый метод, выводит информацию о салате: название, вид заправки, вес, цена;
-          \item[--] double GetFullPrice() override -- возвращает итоговую цену с учётом заправки.
-        \end{itemize}
-\end{itemize}
-
-Исходный код программы находится в репозитории GitHub:
-
-\url{https://github.com/mkstas/VyatSu/tree/master/oop/labaratories/labaratory-work-1}
 
 \section*{\hspace{12.5mm}Вывод}
 В ходе выполнения лабораторной работы была разработана и реализована иерархия классов, моделирующая управление ассортиментом блюд в заведении общественного питания. Изучены основные принципы объектно-ориентированного программированя: инкапсуляция, наследование, полиморфизм. Разработано приложение, демонстрирующее применение данных принципов.
