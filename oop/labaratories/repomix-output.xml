@@ -1,0 +1,583 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: **/*.cs
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+labaratory-work-2/Configurations/LabaratoryDbContext.cs
+labaratory-work-2/Configurations/PizzaConfiguration.cs
+labaratory-work-2/Configurations/SaladConfiguration.cs
+labaratory-work-2/Contracts/Pizzas/CreatePizzaRequest.cs
+labaratory-work-2/Contracts/Pizzas/PizzaResponse.cs
+labaratory-work-2/Contracts/Pizzas/UpdatePizzaRequest.cs
+labaratory-work-2/Contracts/Salads/CreateSaladRequest.cs
+labaratory-work-2/Contracts/Salads/SaladResponse.cs
+labaratory-work-2/Contracts/Salads/UpdateSaladRequest.cs
+labaratory-work-2/Controllers/PizzasController.cs
+labaratory-work-2/Controllers/SaladsController.cs
+labaratory-work-2/Domain/Dish.cs
+labaratory-work-2/Domain/Pizza.cs
+labaratory-work-2/Domain/Salad.cs
+labaratory-work-2/Program.cs
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="labaratory-work-2/Configurations/LabaratoryDbContext.cs">
+using labaratory_work_2.Domain;
+using Microsoft.EntityFrameworkCore;
+
+namespace labaratory_work_2.Configurations;
+
+public class LabaratoryDbContext(
+    DbContextOptions<LabaratoryDbContext> options) : DbContext(options)
+{
+    public DbSet<Pizza> Pizzas { get; set; }
+    public DbSet<Salad> Salads { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new PizzaConfiguration());
+        modelBuilder.ApplyConfiguration(new SaladConfiguration());
+
+        base.OnModelCreating(modelBuilder);
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Configurations/PizzaConfiguration.cs">
+using labaratory_work_2.Domain;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace labaratory_work_2.Configurations;
+
+public class PizzaConfiguration : IEntityTypeConfiguration<Pizza>
+{
+    public void Configure(EntityTypeBuilder<Pizza> builder)
+    {
+        builder.HasKey(p => p.Id);
+
+        builder.Property(p => p.Name);
+        builder.Property(p => p.Weight);
+        builder.Property(p => p.Price);
+
+        builder.Property(p => p.Dough)
+               .HasConversion(
+                    d => d.ToString(),
+                    d => Enum.Parse<Dough>(d)
+               );
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Configurations/SaladConfiguration.cs">
+using labaratory_work_2.Domain;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace labaratory_work_2.Configurations;
+
+public class SaladConfiguration : IEntityTypeConfiguration<Salad>
+{
+    public void Configure(EntityTypeBuilder<Salad> builder)
+    {
+        builder.HasKey(s => s.Id);
+
+        builder.Property(s => s.Name);
+        builder.Property(s => s.Weight);
+        builder.Property(s => s.Price);
+
+        builder.Property(s => s.Dressing)
+               .HasConversion(
+                    d => d.ToString(),
+                    d => Enum.Parse<Dressing>(d)
+               );
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Contracts/Pizzas/CreatePizzaRequest.cs">
+namespace labaratory_work_2.Contracts.Pizzas;
+
+public record class CreatePizzaRequest(
+    string Name,
+    int Weight,
+    double Price);
+</file>
+
+<file path="labaratory-work-2/Contracts/Pizzas/PizzaResponse.cs">
+using labaratory_work_2.Domain;
+
+namespace labaratory_work_2.Contracts.Pizzas;
+
+public record class PizzaResponse(
+    Guid Id,
+    string Name,
+    Dough Dough,
+    int Weight,
+    double Price);
+</file>
+
+<file path="labaratory-work-2/Contracts/Pizzas/UpdatePizzaRequest.cs">
+namespace labaratory_work_2.Contracts.Pizzas;
+
+public record class UpdatePizzaRequest(
+    string Name,
+    int Weight,
+    double Price);
+</file>
+
+<file path="labaratory-work-2/Contracts/Salads/CreateSaladRequest.cs">
+namespace labaratory_work_2.Contracts.Salads;
+
+public record class CreateSaladRequest(
+    string Name,
+    int Weight,
+    double Price
+);
+</file>
+
+<file path="labaratory-work-2/Contracts/Salads/SaladResponse.cs">
+using labaratory_work_2.Domain;
+
+namespace labaratory_work_2.Contracts.Salads;
+
+public record class SaladResponse(
+    Guid Id,
+    string Name,
+    Dressing Dressing,
+    int Weight,
+    double Price
+);
+</file>
+
+<file path="labaratory-work-2/Contracts/Salads/UpdateSaladRequest.cs">
+namespace labaratory_work_2.Contracts.Salads;
+
+public record class UpdateSaladRequest(
+    string Name,
+    int Weight,
+    double Price
+);
+</file>
+
+<file path="labaratory-work-2/Controllers/PizzasController.cs">
+using labaratory_work_2.Configurations;
+using labaratory_work_2.Contracts.Pizzas;
+using labaratory_work_2.Domain;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace labaratory_work_2.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class PizzasController(LabaratoryDbContext context) : Controller
+{
+    private readonly LabaratoryDbContext _context = context;
+
+    [HttpPost]
+    public async Task<IActionResult> CreateAsync([FromBody] CreatePizzaRequest request)
+    {
+        await _context.Pizzas.AddAsync(
+            new Pizza(request.Name, request.Weight, request.Price));
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        var pizzas = await _context.Pizzas.ToListAsync();
+
+        List<PizzaResponse> response = [.. pizzas.Select(
+            p => new PizzaResponse(p.Id, p.Name, p.Dough, p.Weight, p.Price))];
+
+        return Ok(response);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id)
+    {
+        var pizza = await _context.Pizzas.FirstOrDefaultAsync(p => p.Id == id);
+        var response = new PizzaResponse(pizza!.Id, pizza.Name, pizza.Dough, pizza.Weight, pizza.Price);
+
+        return Ok(response);
+    }
+
+    [HttpGet("{id:guid}/cut")]
+    public async Task<IActionResult> CutAsync([FromRoute] Guid id)
+    {
+        var pizza = await _context.Pizzas.FirstOrDefaultAsync(p => p.Id == id);
+        string message = pizza!.CutInSlices();
+
+        return Ok(message);
+    }
+
+    [HttpGet("{id:guid}/info")]
+    public async Task<IActionResult> DisplayInfoAsync([FromRoute] Guid id)
+    {
+        var pizza = await _context.Pizzas.FirstOrDefaultAsync(p => p.Id == id);
+        string message = pizza!.DisplayInfo();
+
+        return Ok(message);
+    }
+
+    [HttpGet("{id:guid}/fullprice")]
+    public async Task<IActionResult> GetFullPriceAsync([FromRoute] Guid id)
+    {
+        var pizza = await _context.Pizzas.FirstOrDefaultAsync(p => p.Id == id);
+        double message = pizza!.CalcFullPrice();
+
+        return Ok(message);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateAsync(
+        [FromRoute] Guid id,
+        [FromBody] UpdatePizzaRequest request
+    )
+    {
+        await _context.Pizzas
+            .Where(p => p.Id == id)
+            .ExecuteUpdateAsync(p => p
+                .SetProperty(p => p.Name, request.Name)
+                .SetProperty(p => p.Weight, request.Weight)
+                .SetProperty(p => p.Price, request.Price));
+
+        return NoContent();
+    }
+
+    [HttpPatch("{id:guid}/dough")]
+    public async Task<IActionResult> ChangeDressingAsync([FromRoute] Guid id)
+    {
+        var pizza = await _context.Pizzas.FirstOrDefaultAsync(p => p.Id == id);
+        pizza!.ChangeDough();
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
+    {
+        await _context.Pizzas
+            .Where(p => p.Id == id)
+            .ExecuteDeleteAsync();
+
+        return NoContent();
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Controllers/SaladsController.cs">
+using labaratory_work_2.Configurations;
+using labaratory_work_2.Contracts.Salads;
+using labaratory_work_2.Domain;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace labaratory_work_2.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class SaladsController(LabaratoryDbContext context) : Controller
+{
+    private readonly LabaratoryDbContext _context = context;
+
+    [HttpPost]
+    public async Task<IActionResult> CreateAsync([FromBody] CreateSaladRequest request)
+    {
+        await _context.Salads.AddAsync(
+            new Salad(request.Name, request.Weight, request.Price));
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        var salads = await _context.Salads.ToListAsync();
+
+        List<SaladResponse> response = [.. salads.Select(s =>
+            new SaladResponse(s.Id, s.Name, s.Dressing, s.Weight, s.Price))];
+
+        return Ok(response);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id)
+    {
+        var salad = await _context.Salads.FirstOrDefaultAsync(s => s.Id == id);
+        var response = new SaladResponse(salad!.Id, salad.Name, salad.Dressing, salad.Weight, salad.Price);
+
+        return Ok(response);
+    }
+
+    [HttpGet("{id:guid}/toss")]
+    public async Task<IActionResult> TossAsync([FromRoute] Guid id)
+    {
+        var salad = await _context.Salads.FirstOrDefaultAsync(s => s.Id == id);
+        string message = salad!.TossWithDressing();
+
+        return Ok(message);
+    }
+
+    [HttpGet("{id:guid}/info")]
+    public async Task<IActionResult> DisplayInfoAsync([FromRoute] Guid id)
+    {
+        var salad = await _context.Salads.FirstOrDefaultAsync(s => s.Id == id);
+        string message = salad!.DisplayInfo();
+
+        return Ok(message);
+    }
+
+    [HttpGet("{id:guid}/fullprice")]
+    public async Task<IActionResult> GetFullPriceAsync([FromRoute] Guid id)
+    {
+        var salad = await _context.Salads.FirstOrDefaultAsync(s => s.Id == id);
+        double message = salad!.CalcFullPrice();
+
+        return Ok(message);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateAsync(
+        [FromRoute] Guid id,
+        [FromBody] UpdateSaladRequest request
+    )
+    {
+        await _context.Salads
+            .Where(s => s.Id == id)
+            .ExecuteUpdateAsync(s => s
+                .SetProperty(s => s.Name, request.Name)
+                .SetProperty(s => s.Weight, request.Weight)
+                .SetProperty(s => s.Price, request.Price));
+
+        return NoContent();
+    }
+
+    [HttpPatch("{id:guid}/dressing")]
+    public async Task<IActionResult> ChangeDressingAsync([FromRoute] Guid id)
+    {
+        var salad = await _context.Salads.FirstOrDefaultAsync(p => p.Id == id);
+        salad!.ChangeDressing();
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
+    {
+        await _context.Salads
+            .Where(s => s.Id == id)
+            .ExecuteDeleteAsync();
+
+        return NoContent();
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Domain/Dish.cs">
+namespace labaratory_work_2.Domain;
+
+public abstract class Dish(string name, int weight = 100, double price = 10.0)
+{
+    public Guid Id { get; } = Guid.NewGuid();
+    public string Name { get; set; } = name;
+    public int Weight { get; set; } = weight;
+    public double Price { get; set; } = price;
+
+    public Dish(string name) : this(name, 200, 20.0)
+    {
+    }
+
+    public Dish() : this("Dish")
+    {
+    }
+
+    public abstract string DisplayInfo();
+    public abstract double CalcFullPrice();
+}
+</file>
+
+<file path="labaratory-work-2/Domain/Pizza.cs">
+namespace labaratory_work_2.Domain;
+
+public enum Dough
+{
+    Thin,
+    Thick
+}
+
+public class Pizza : Dish
+{
+    public Dough Dough { get; set; } = Dough.Thick;
+
+    public Pizza() : base()
+    {
+    }
+
+    public Pizza(string name) : base(name)
+    {
+    }
+
+    public Pizza(string name, int weight, double price)
+        : base(name, weight, price)
+    {
+    }
+
+    public void ChangeDough()
+    {
+        Dough = Dough == Dough.Thin ? Dough.Thick : Dough.Thin;
+    }
+
+    public string CutInSlices()
+    {
+        return $"Cutting the pizza {Name} into slices...";
+    }
+
+    public override string DisplayInfo()
+    {
+        return $"Pizza: {Name}, {Dough} dough, {Weight}g, ${CalcFullPrice()}";
+    }
+
+    public override double CalcFullPrice()
+    {
+        return Math.Round(
+            Dough == Dough.Thin ? Price * 1.3 : Price * 1.5,
+            2,
+            MidpointRounding.AwayFromZero
+        );
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Domain/Salad.cs">
+namespace labaratory_work_2.Domain;
+
+public enum Dressing
+{
+    OliveOil,
+    Mayonnaise
+}
+
+public class Salad : Dish
+{
+    public Dressing Dressing { get; set; } = Dressing.OliveOil;
+
+    public Salad() : base()
+    {
+    }
+
+    public Salad(string name) : base(name)
+    {
+    }
+
+    public Salad(string name, int weight, double price)
+        : base(name, weight, price)
+    {
+    }
+
+    public void ChangeDressing()
+    {
+        Dressing = Dressing == Dressing.OliveOil ? Dressing.Mayonnaise : Dressing.OliveOil;
+    }
+
+    public string TossWithDressing()
+    {
+        return $"Tossing the salad {Name} with {Dressing}...";
+    }
+
+    public override string DisplayInfo()
+    {
+        return $"Salad: {Name}, {Dressing} dressing, {Weight}g, ${CalcFullPrice()}";
+    }
+
+    public override double CalcFullPrice()
+    {
+        return Math.Round(
+           Dressing == Dressing.OliveOil ? Price * 1.4 : Price * 1.3,
+           2,
+           MidpointRounding.AwayFromZero
+        );
+    }
+}
+</file>
+
+<file path="labaratory-work-2/Program.cs">
+using labaratory_work_2.Configurations;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()!)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
+builder.Services.AddDbContext<LabaratoryDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(LabaratoryDbContext)));
+});
+
+var app = builder.Build();
+
+app.UseCors();
+
+app.MapControllers();
+
+app.Run();
+</file>
+
+</files>

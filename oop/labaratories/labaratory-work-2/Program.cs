@@ -1,17 +1,30 @@
-namespace labaratory_work_2
+using labaratory_work_2.Configurations;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
 {
-    internal static class Program
+    options.AddDefaultPolicy(policy =>
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-        }
-    }
-}
+        policy.WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()!)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
+builder.Services.AddDbContext<LabaratoryDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(LabaratoryDbContext)));
+});
+
+var app = builder.Build();
+
+app.UseCors();
+
+app.MapControllers();
+
+app.Run();

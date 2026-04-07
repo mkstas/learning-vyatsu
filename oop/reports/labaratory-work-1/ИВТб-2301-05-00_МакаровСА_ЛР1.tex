@@ -71,31 +71,29 @@
 \begin{itemize}
   \item[--] Поля:
   \begin{itemize}
-    \item[--] std::string name -- название блюда, строковый тип данных;
-    \item[--] int weight -- вес блюда, целочисленный тип данных;
-    \item[--] double price -- цена блюда, формат с плавающей запятой;
+    \item[--] private std::string name -- приватное поле, означающее название блюда, строковый тип данных;
+    \item[--] private int weight -- приватное поле, означающее вес блюда, целочисленный тип данных;
+    \item[--] private double price -- приватное поле, цена блюда, формат с плавающей запятой;
   \end{itemize}
   \item[--] Конструкторы:
   \begin{itemize}
-    \item[--] Dish() - задает значения полей по умолчанию;
-    \item[--] Dish(std::string name) - принимает название блюда в качестве параметра;
-    \item[--] Dish(std::string name, int weight, double price) - принимает  в качестве параметров название, вес и цену блюда;
+    \item[--] public Dish() - публичный конструктор, задает значения полей по умолчанию;
+    \item[--] public Dish(std::string name) - публичный конструктор, принимает название блюда в качестве параметра;
+    \item[--] public Dish(std::string name, int weight, double price) - публичный конструктор, принимает  в качестве параметров название, вес и цену блюда;
   \end{itemize}
   \item[--] Геттеры/сеттеры:
   \begin{itemize}
-    \item[--] std::string GetName() const -- возвращает название блюда;
-    \item[--] int GetWeight() const -- возвращает вес блюда;
-    \item[--] double GetPrice() const -- возвращает цену блюда;
-    \item[--] void SetName(std::string name) -- задает значение названию блюда, принимает в качестве параметра название блюда;
-    \item[--] void SetWeight(int weight) -- задает значение весу блюда,
-    принимает в качестве параметра вес блюда;
-    \item[--] void SetPrice(double price) -- задает значение цене блюда,
-    принимает в качестве параметра цену блюда;
+    \item[--] public std::string GetName() const -- геттер, возвращает название блюда;
+    \item[--] public int GetWeight() const -- геттер, возвращает вес блюда;
+    \item[--] public double GetPrice() const -- геттер, возвращает цену блюда;
+    \item[--] public void SetName(std::string name) -- сеттер, задает значение названию блюда, принимает в качестве параметра название блюда;
+    \item[--] public void SetWeight(int weight) -- сеттер, задает значение весу блюда, принимает в качестве параметра вес блюда;
+    \item[--] public void SetPrice(double price) -- сеттер, задает значение цене блюда, принимает в качестве параметра цену блюда;
   \end{itemize}
   \item[--] Абстрактные методы:
   \begin{itemize}
-    \item[--] virtual void DisplayInfo() = 0 -- виртуальный метод, отображающий информацию о блюде, не принимает параметров;
-    \item[--] virtual double CalcFullPrice() = 0 -- виртуальный метод, возвращающий полную цену блюда.
+    \item[--] public virtual void DisplayInfo() = 0 -- публичный виртуальный метод, отображающий информацию о блюде, не принимает параметров;
+    \item[--] public virtual double CalcFullPrice() = 0 -- публичный виртуальный метод, возвращающий полную цену блюда.
   \end{itemize}
 \end{itemize}
 
@@ -103,28 +101,34 @@
 \begin{itemize}
   \item[--] Собственные поля:
   \begin{itemize}
-    \item[--] Dough dough = Dough::Thick -- типа теста, по умолчанию Thick;
+    \item[--] private Dough dough = Dough::Thick -- приватное поле, означающее типа теста, по умолчанию Thick;
   \end{itemize}
   \item[--] Конструкторы:
   \begin{itemize}
-    \item[--] Pizza() : Dish() -- задает значения полей по умолчанию;
-    \item[--] Pizza(std::string name) : Dish(name) -- принимает название пиццы в качестве параметра;
-    \item[--] Pizza(std::string name, int weight, double price) : Dish(name, weight, price) -- принимает в качестве параметров название, вес и цену пиццы;
+    \item[--] public Pizza() : Dish() -- публичный конструктор, задает значения полей по умолчанию;
+    \item[--] public Pizza(std::string name) : Dish(name) -- публичный конструктор, принимает название пиццы в качестве параметра;
+    \item[--] public Pizza(std::string name, int weight, double price) : Dish(name, weight, price) -- публичный конструктор, принимает в качестве параметров название, вес и цену пиццы;
   \end{itemize}
   \item[--] Геттеры/сеттеры:
   \begin{itemize}
-    \item[--] Dough GetDough() const -- возвращает тип теста;
-    \item[--] void SetDough(Dough dough) -- задает значение типу теста, принимает в качестве параметра enum Dough (Thick, Thin);
+    \item[--] public Dough GetDough() const -- геттер, возвращает тип теста;
+    \item[--] public void SetDough(Dough dough) -- сеттер, задает значение типу теста, принимает в качестве параметра enum Dough (Thick, Thin);
   \end{itemize}
   \item[--] Переопределенные методы:
   \begin{itemize}
-    \item[--] void DisplayInfo() override -- отображает информацию о пицце (название, тип теста, вес, цена), не принимает параметров;
-    \item[--] double CalcFullPrice() override -- возвращает полную цену в зависимости от типа теста (Thick: price * 1.5, Thin: price * 1.3), не принимает параметров;
+    \item[--] public void DisplayInfo() override -- публичный метод, отображает информацию о пицце (название, тип теста, вес, цена), не принимает параметров, выводит информацию в следующем виде:
+    \begin{Verbatim}[tabsize=4]
+Pizza: Margarita, thick dough, 450g, $18.00;
+    \end{Verbatim}
+    \item[--] public double CalcFullPrice() override -- публичный метод, возвращает полную цену в зависимости от типа теста (Thick: price * 1.5, Thin: price * 1.3), не принимает параметров;
   \end{itemize}
   \item[--] Собственные методы:
   \begin{itemize}
-    \item[--] void ChangeDough() -- меняет тип теста, не принимает параметров;
-    \item[--] void CutInSlices() -- нарезает пиццу на куски, не принимает параметров;
+    \item[--] public void ChangeDough() -- публичный метод, меняет тип теста, не принимает параметров;
+    \item[--] public void CutInSlices() -- публичный метод, нарезает пиццу на куски, не принимает параметров, выводит информацию в следующем виде:
+    \begin{Verbatim}[tabsize=4]
+Cutting the pizza into slices...;
+    \end{Verbatim}
   \end{itemize}
 \end{itemize}
 
@@ -132,34 +136,39 @@
 \begin{itemize}
   \item[--] Собственные поля:
   \begin{itemize}
-    \item[--] Dressing dressing = Dressing::OliveOil -- тип заправки, по умолчанию OliveOil;
+    \item[--] private Dressing dressing -- приватное поле, означающее приватное поле, о тип заправки, по умолчанию OliveOil;
   \end{itemize}
   \item[--] Конструкторы:
   \begin{itemize}
-    \item[--] Salad() : Dish() -- задает значения полей по умолчанию;
-    \item[--] Salad(std::string name) : Dish(name) -- принимает название салата в качестве параметра;
-    \item[--] Salad(std::string name, int weight, double price) : Dish(name, weight, price) -- принимает в качестве параметров название, вес и цену салата;
+    \item[--] public Salad() : Dish() -- публичный конструктор, задает значения полей по умолчанию;
+    \item[--] public Salad(std::string name) : Dish(name) -- публичный конструктор, принимает название салата в качестве параметра;
+    \item[--] public Salad(std::string name, int weight, double price) : Dish(name, weight, price) -- публичный конструктор, принимает в качестве параметров название, вес и цену салата;
   \end{itemize}
   \item[--] Геттеры/сеттеры:
   \begin{itemize}
-    \item[--] Dressing GetDressing() const -- возвращает тип заправки;
-    \item[--] SetDressing(Dressing dressing) -- задает значение типу заправки, принимает в качестве параметра enum Dressing (OliveOil, Mayonnaise);
+    \item[--] public Dressing GetDressing() const -- геттер, возвращает тип заправки;
+    \item[--] public SetDressing(Dressing dressing) -- сеттер, задает значение типу заправки, принимает в качестве параметра enum Dressing (OliveOil, Mayonnaise);
   \end{itemize}
   \item[--] Переопределенные методы:
   \begin{itemize}
-    \item[--] void DisplayInfo() override -- отображает информацию о салате (название, тип заправки, вес, цена), не принимает параметров;
-    \item[--] double CalcFullPrice() override -- возвращает полную цену в зависимости от типа заправки (OliveOil: price * 1.4, Mayonnaise: price * 1.3), не принимает параметров;
+    \item[--] public void DisplayInfo() override -- публичный метод, отображает информацию о салате (название, тип заправки, вес, цена), не принимает параметров,  информацию в следующем виде:
+    \begin{Verbatim}[tabsize=4]
+Salad: Caesar, OliveOil dressing, 250g, $12.60;
+    \end{Verbatim}
+    \item[--] public double CalcFullPrice() override -- публичный метод, возвращает полную цену в зависимости от типа заправки (OliveOil: price * 1.4, Mayonnaise: price * 1.3), не принимает параметров
   \end{itemize}
   \item[--] Собственные методы:
   \begin{itemize}
-    \item[--] void ChangeDressing() -- меняет тип заправки, не принимает параметров;
-    \item[--] void TossWithDressing() -- перемешивает салат с заправкой, не принимает параметров;
+    \item[--] public void ChangeDressing() -- публичный метод, меняет тип заправки, не принимает параметров;
+    \item[--] public void TossWithDressing() -- публичный метод, перемешивает салат с заправкой, не принимает параметров, выводит информацию в следующем виде:
+    \begin{Verbatim}[tabsize=4]
+Tossing the salad with OliveOil...;
+    \end{Verbatim}
   \end{itemize}
 \end{itemize}
 
 Диаграмма классов представлена на рисунке 1.
 
-\pagebreak
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\linewidth]{img/uml.png}
