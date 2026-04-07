@@ -160,7 +160,7 @@ Tossing the salad with OliveOil...;
 \begin{Verbatim}[tabsize=4]
 "ConnectionStrings": {
   "LabaratoryDbContext": "User ID=root;Password=root;
-            Host=localhost;Port=5432;Database=labaratory_cs;"
+        Host=localhost;Port=5432;Database=labaratory_cs;"
 }
 \end{Verbatim}
 
@@ -168,19 +168,22 @@ Tossing the salad with OliveOil...;
 \begin{Verbatim}[tabsize=4]
 builder.Services.AddDbContext<LabaratoryDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(LabaratoryDbContext)));
+    options.UseNpgsql(builder.Configuration
+      .GetConnectionString(nameof(LabaratoryDbContext)));
 });
 \end{Verbatim}
 
 И сам класс контекста:
 \begin{Verbatim}[tabsize=4]
 public class LabaratoryDbContext(
-    DbContextOptions<LabaratoryDbContext> options) : DbContext(options)
+    DbContextOptions<LabaratoryDbContext> options)
+        : DbContext(options)
 {
     public DbSet<Pizza> Pizzas { get; set; }
     public DbSet<Salad> Salads { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(
+        ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new PizzaConfiguration());
         modelBuilder.ApplyConfiguration(new SaladConfiguration());
@@ -215,15 +218,40 @@ public class PizzaConfiguration : IEntityTypeConfiguration<Pizza>
 
 Содержит следующие методы:
 \begin{itemize}
-  \item[--] public async Task<IActionResult> CreateAsync([FromBody] CreatePizzaRequest request) -- метод, который создает новую запись о пицце;
-  \item[--] public async Task<IActionResult> GetAllAsync() -- метод, возвращающий весь список пицц, хранящаеся в базе данных;
-  \item[--] public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id) -- метод, возвращающий отдельную запись о пицце по уникальному идентификатору;
+  \item[--] public async Task<IActionResult> CreateAsync([FromBody] CreatePizzaRequest request) -- метод, который создает новую запись о пицце, использующий методы AddAsync (добавление записи в контекст) и SaveChangesAsync (сохранение записи в базе данных):
+  \begin{Verbatim}[tabsize=4]
+    await _context.Pizzas.AddAsync(
+        new Pizza(request.Name, request.Weight, request.Price));
+    await _context.SaveChangesAsync();
+  \end{Verbatim}
+  \item[--] public async Task<IActionResult> GetAllAsync() -- метод, возвращающий весь список пицц, хранящаеся в базе данных, использующий метод AddAsync ToListAsync (получение всех записей):
+  \begin{Verbatim}[tabsize=4]
+    var pizzas = await _context.Pizzas.ToListAsync();
+  \end{Verbatim}
+  \item[--] public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id) -- метод, возвращающий отдельную запись о пицце по уникальному идентификатору, использующий метод FirstOrDefaultAsync (получение первой записи по уникальному идентификатору):
+  \begin{Verbatim}[tabsize=4]
+    var pizza = await _context.Pizzas.FirstOrDefaultAsync(
+      p => p.Id == id);
+  \end{Verbatim}
   \item[--] public async Task<IActionResult> CutAsync([FromRoute] Guid id) -- метод, возвращающий сообщение о нарезании пиццы на кусочки по уникальному идентификатору;
-  \item[--] public async Task<IActionResult> DisplayInfoAsync([FromRoute] Guid id) -- метод, возвращающий полное описание записи пиццы по уникальному идентификатору;
+  \item[--] public async Task<IActionResult> DisplayInfoAsync([FromRoute] Guid id) -- метод, возвращающий полное описание записи пиццы по уникальному идентификатору, использующий методы  Where (условие выбора сущности) и ExecuteUpdateAsync (обновление полей записи):
+  \begin{Verbatim}[tabsize=4]
+    await _context.Pizzas
+      .Where(p => p.Id == id)
+      .ExecuteUpdateAsync(p => p
+          .SetProperty(p => p.Name, request.Name)
+          .SetProperty(p => p.Weight, request.Weight)
+          .SetProperty(p => p.Price, request.Price));
+  \end{Verbatim}
   \item[--] public async Task<IActionResult> GetFullPriceAsync([FromRoute] Guid id) -- метод, возвращающий полную стоимость пиццы по уникальному идентификатору;
   \item[--] public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] UpdatePizzaRequest request) -- метод, который обновляет записи о пицце по уникальному идентификатору;
   \item[--] public async Task<IActionResult> ChangeDressingAsync([FromRoute] Guid id) -- метод, меняющий тип теста пиццы по уникальному идентификатору;
-  \item[--] public async Task<IActionResult> DeleteAsync([FromRoute] Guid id) -- метод, удаляющий запись о пицце по уникальному идентификатору.
+  \item[--] public async Task<IActionResult> DeleteAsync([FromRoute] Guid id) -- метод, удаляющий запись о пицце по уникальному идентификатору, использующий методы Where и ExecuteDeleteAsync (удаление записи):
+  \begin{Verbatim}[tabsize=4]
+    await _context.Pizzas
+      .Where(p => p.Id == id)
+      .ExecuteDeleteAsync();
+  \end{Verbatim}
 \end{itemize}
 
 Конфигурация и контроллер для сущности <<Salad>> выполняется аналогичным способом и содержат аналогичные методы.
@@ -235,7 +263,7 @@ public class PizzaConfiguration : IEntityTypeConfiguration<Pizza>
   \includegraphics[width=1\linewidth]{img/uml-2.png}
 \end{figure}
 \begin{center}
-  Рисунок 1 – Диаграмма классов контроллеров и конфигураций
+  Рисунок 2 – Диаграмма классов контроллеров и конфигураций
 \end{center}
 
 Также разработан веб-интерфейс для взаимодействия с WEB API, экранные формы которого представлены на рисунках 3, 4.

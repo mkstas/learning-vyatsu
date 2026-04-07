@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.11)  7 APR 2026 11:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.11)  7 APR 2026 11:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -441,52 +441,53 @@ Overfull \hbox (7.04427pt too wide) in paragraph at lines 157--158
  []
 
 [6 <./img/uml-1.png>]
-Overfull \hbox (28.36426pt too wide) in paragraph at lines 193--194
+Overfull \hbox (28.36426pt too wide) in paragraph at lines 196--197
 []\T2A/cmr/m/n/14.4 Конфигурация сущ-но-сти, на-при-мер для <<Pizza>> со-дер-жит ме-тод Configure(),
  []
 
 [7]
-Overfull \hbox (37.9255pt too wide) in paragraph at lines 218--219
+Overfull \hbox (37.9255pt too wide) in paragraph at lines 221--222
 []\T2A/cmr/m/n/14.4 public async Task<IActionResult> CreateAsync([FromBody] CreatePizzaRequest
  []
 
-
-Overfull \hbox (0.88585pt too wide) in paragraph at lines 222--223
+[8]
+Overfull \hbox (0.88585pt too wide) in paragraph at lines 237--238
 []\T2A/cmr/m/n/14.4 public async Task<IActionResult> DisplayInfoAsync([FromRoute] Guid id)
  []
 
 
-Overfull \hbox (48.98022pt too wide) in paragraph at lines 224--225
+Overfull \hbox (48.98022pt too wide) in paragraph at lines 247--248
 []\T2A/cmr/m/n/14.4 public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody]
  []
 
-[8]
-Overfull \hbox (8.59442pt too wide) in paragraph at lines 225--226
+
+Overfull \hbox (8.59442pt too wide) in paragraph at lines 248--249
 []\T2A/cmr/m/n/14.4 public async Task<IActionResult> ChangeDressingAsync([FromRoute] Guid
  []
 
-<img/uml-2.png, id=33, 1022.82124pt x 630.355pt>
+[9]
+<img/uml-2.png, id=36, 1022.82124pt x 630.355pt>
 File: img/uml-2.png Graphic file (type png)
 <use img/uml-2.png>
-Package pdftex.def Info: img/uml-2.png  used on input line 235.
+Package pdftex.def Info: img/uml-2.png  used on input line 263.
 (pdftex.def)             Requested size: 483.69687pt x 298.09439pt.
 
-Overfull \hbox (6.6575pt too wide) in paragraph at lines 241--242
+Overfull \hbox (6.6575pt too wide) in paragraph at lines 269--270
 []\T2A/cmr/m/n/14.4 Также раз-ра-бо-тан веб-интерфейс для вза-и-мо-дей-ствия с WEB API, экран-
  []
 
-[9 <./img/uml-2.png>]
-<img/form-1.png, id=38, 839.38594pt x 529.98pt>
+[10 <./img/uml-2.png>]
+<img/form-1.png, id=41, 839.38594pt x 529.98pt>
 File: img/form-1.png Graphic file (type png)
 <use img/form-1.png>
-Package pdftex.def Info: img/form-1.png  used on input line 246.
+Package pdftex.def Info: img/form-1.png  used on input line 274.
 (pdftex.def)             Requested size: 425.6556pt x 268.74971pt.
-<img/form-2.png, id=40, 837.88031pt x 526.96875pt>
+<img/form-2.png, id=43, 837.88031pt x 526.96875pt>
 File: img/form-2.png Graphic file (type png)
 <use img/form-2.png>
-Package pdftex.def Info: img/form-2.png  used on input line 254.
+Package pdftex.def Info: img/form-2.png  used on input line 282.
 (pdftex.def)             Requested size: 425.6556pt x 267.70518pt.
- [10 <./img/form-1.png> <./img/form-2.png>] [11] (./РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 2.aux)
+ [11 <./img/form-1.png> <./img/form-2.png>] [12] (./РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 2.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
@@ -499,12 +500,12 @@ Here is how much of TeX's memory you used:
  33607 multiletter control sequences out of 15000+600000
  631787 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,7n,65p,818b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,7n,65p,818b,403s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/Users/sempai/AppData/Roaming/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 2.pdf (11 pages, 221877 bytes).
+Output written on РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 2.pdf (12 pages, 223367 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
