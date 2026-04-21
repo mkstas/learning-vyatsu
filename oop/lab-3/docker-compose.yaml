@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:18.2-alpine
+    container_name: postgres_jvm
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: restaurant_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4:9.12
+    container_name: pgadmin_jvm
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@mail.loc
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - 5050:80
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:
