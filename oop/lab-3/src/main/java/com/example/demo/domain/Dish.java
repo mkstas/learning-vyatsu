@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.dto.DishResponse;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,4 +34,5 @@ public abstract class Dish {
 
     public abstract String displayInfo();
     public abstract double calcFullPrice();
+    public abstract DishResponse getInfo();
 }

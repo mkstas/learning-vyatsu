@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.dto.DishResponse;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,5 +45,17 @@ public class Salad extends Dish {
         return BigDecimal.valueOf(result)
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();
+    }
+
+    @Override
+    public DishResponse getInfo() {
+        return new DishResponse(
+                getId(),
+                getName(),
+                getWeight(),
+                getPrice(),
+                "Salad",
+                getDressing().name()
+        );
     }
 }

@@ -1,12 +1,13 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.*;
-import com.example.demo.dto.OrderCreateRequest;
+import com.example.demo.dto.*;
 import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -45,8 +46,28 @@ public class OrderService {
         order.setCost(total);
     }
 
-    public Order getOrder(UUID id) {
-        return orderRepository.findById(id)
+    public List<OrderSummaryResponse> getAllOrders() {
+        return orderRepository.findAll().stream()
+                .map(order -> new OrderSummaryResponse(
+                        order.getId(),
+                        order.getCreatedAt(),
+                        order.getCost()
+                ))
+                .toList();
+    }
+
+    public OrderResponse getOrder(UUID id) {
+        Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        List<OrderItemResponse> responses = order.getItems().stream()
+                .map(item -> new OrderItemResponse(
+                    item.getId(),
+                    item.getDish().getInfo(),
+                    item.getQuantity()
+                ))
+                .toList();
+
+        return new OrderResponse(order.getId(), order.getCreatedAt(), order.getCost(), responses);
     }
 }
