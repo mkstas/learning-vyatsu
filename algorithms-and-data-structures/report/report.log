@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  2 APR 2026 13:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  14 MAY 2026 13:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -420,25 +420,31 @@ Overfull \hbox (3.93079pt too wide) in paragraph at lines 42--48
 
 [1
 
-{d:/Programs/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{d:/Programs/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] [2] (./report.aux)
+{d:/Programs/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{d:/Programs/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] [2]
+<img/chess.png, id=11, 1045.9075pt x 1047.915pt>
+File: img/chess.png Graphic file (type png)
+<use img/chess.png>
+Package pdftex.def Info: img/chess.png  used on input line 75.
+(pdftex.def)             Requested size: 483.69687pt x 484.6371pt.
+ [3 <./img/chess.png>] [4] [5] [6] (./report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4667 strings out of 467538
- 77550 string characters out of 5419036
- 491715 words of memory out of 5000000
- 33551 multiletter control sequences out of 15000+600000
+ 4678 strings out of 467538
+ 77803 string characters out of 5419036
+ 495715 words of memory out of 5000000
+ 33562 multiletter control sequences out of 15000+600000
  631477 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,7n,65p,397b,204s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
-Output written on report.pdf (2 pages, 36530 bytes).
+ 57i,7n,65p,782b,240s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
+Output written on report.pdf (6 pages, 117189 bytes).
 PDF statistics:
- 22 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 57 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

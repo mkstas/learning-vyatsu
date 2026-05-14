@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1775124829.8319 "d:/learning-vyatsu/algorithms-and-data-structures/report/report.tex" "report.pdf" "report" 1775124830.41739 0
+["pdflatex"] 1778753426.16045 "d:/learning-vyatsu/algorithms-and-data-structures/report/report.tex" "report.pdf" "report" 1778753426.80645 0
   "c:/Users/sempai/.texlive2025/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1765473164 3304 6a543c07045572737981351171e0505e ""
   "c:/Users/sempai/.texlive2025/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1765473162 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "d:/Programs/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1765128651 3141 82d5616418ed8d5de703b3951bedecb4 ""
@@ -10,6 +10,10 @@
   "d:/Programs/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1765128637 1524 4414a8315f39513458b80dfc63bff03a ""
   "d:/Programs/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1765128637 1288 655e228510b4c2a1abe905c368440826 ""
   "d:/Programs/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1765128637 1124 6c73e740cf17375f03eec0ee63599741 ""
+  "d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1765123994 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1765123994 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
+  "d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1765123994 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1765123994 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb" 1765128651 135942 aecb5af344df420d6ec421db27dedf62 ""
   "d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb" 1765128651 131078 3adc08bf3d7686c3b3220602214807d7 ""
   "d:/Programs/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1765134413 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -46,9 +50,10 @@
   "d:/Programs/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1765138585 5587502 845fe64088bd4b7cee92e299fc4fb124 ""
   "d:/Programs/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1765138732 3635968 d667bbc1fffa0a44f18522ef328452ed ""
   "d:/Programs/texlive/2025/texmf.cnf" 1765138570 713 e69b156964470283e0530f5060668171 ""
-  "d:/learning-vyatsu/algorithms-and-data-structures/report/report.tex" 1775124829 3156 d84cb3f5c76cdbf7096bbee891cdb5e5 ""
-  "report.aux" 1775124830 170 6debe58c51c597ba046de65b5b3f8997 "pdflatex"
-  "report.tex" 1775124829 3156 d84cb3f5c76cdbf7096bbee891cdb5e5 ""
+  "d:/learning-vyatsu/algorithms-and-data-structures/report/report.tex" 1778753425 10953 67b10c831b4deffe853cc34108d6a78e ""
+  "img/chess.png" 1778749195 259525 4c746ae9fa7954c1bf5a4c0075f4fda2 ""
+  "report.aux" 1778753426 170 abfd21c7305f0b5c4c61d3e1cb3ea5b4 "pdflatex"
+  "report.tex" 1778753425 10953 67b10c831b4deffe853cc34108d6a78e ""
   (generated)
   "report.aux"
   "report.log"
