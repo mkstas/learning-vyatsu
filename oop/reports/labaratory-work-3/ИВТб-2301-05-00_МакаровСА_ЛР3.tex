@@ -60,7 +60,228 @@
 \section*{\hspace{12.5mm}Решение}
 Предметная область описывает управление ассортиментом блюд в заведении общественного питания. Система позволяет хранить информацию о различных блюдах, учитывать их специфические характеристики, рассчитывать итоговую цену для клиента в зависимости от этих характеристик и выводить информацию о блюде в удобном виде.
 
+Программа содержит классы <<Dish>>, представлющий базовый класс блюда,  <<Pizza>>, наследованный от <<Dish>> и представлющий класс пиццы, <<Salad>> наследованный от <<Dish>> и представлющий класс салата. Также для создания заказов сущноствуют классы <<Order>> и <<OrderItem>>, представлющий блюдо в заказе.
+
+Базовый класс <<Dish>> содержит:
+\begin{itemize}
+  \item[--] Поля:
+    \begin{itemize}
+      \item[--] private UUID id -- поле, означающее уникальный идентификатор;
+      \item[--] private String name -- поле, означающее название блюда, строковый тип данных;
+      \item[--] private int weight -- поле, означающее вес блюда, целочисленный тип данных;
+      \item[--] private double price -- поле, цена блюда, формат с плавающей запятой;
+    \end{itemize}
+  \item[--] Конструкторы:
+    \begin{itemize}
+      \item[--] public Dish(String name, int weight, double price) - публичный конструктор, принимает  в качестве параметров название, вес и цену блюда;
+      \item[--] public Dish(String name) - публичный конструктор, принимает название блюда в качестве параметра;
+      \item[--] protected Dish() {} -- конструктор, необходимый для Hibernete;
+    \end{itemize}
+  \item[--] Абстрактные методы:
+    \begin{itemize}
+      \item[--] public abstract String displayInfo() -- публичный абстрактный метод, возвращающий информацию о блюде, не принимает параметров;
+      \item[--] public abstract double calcFullPrice() -- публичный абстрактный метод, возвращающий полную цену блюда;
+      \item[--] public abstract DishResponse getInfo() -- публичный абстрактный метод, возвращающий озвращающий информацию о блюде в необходимом формате для ответа на запрос к серверу.
+    \end{itemize}
+\end{itemize}
+
+Класс <<Pizza>>, наследованный от класса <<Dish>> содержит:
+\begin{itemize}
+  \item[--] Собственные поля:
+    \begin{itemize}
+      \item[--] private Dough dough = Dough.THICK; = Dough.THICK -- поле, означающее типа теста, по умолчанию THICK;
+    \end{itemize}
+  \item[--] Конструкторы:
+    \begin{itemize}
+      \item[--] public Pizza() { super(); } -- публичный конструктор, необходимый для Hibernete;
+      \item[--] public Pizza(String name) { super(name); } -- публичный конструктор, принимает название пиццы в качестве параметра;
+      \item[--] public Pizza(String name, int weight, double price) { super(name, weight, price); } -- публичный конструктор, принимает в качестве параметров название, вес и цену пиццы;
+    \end{itemize}
+  \item[--] Переопределенные методы:
+    \begin{itemize}
+      \item[--] public String displayInfo() -- публичный метод, возвращающий информацию о пицце (название, тип теста, вес, цена), не принимает параметров, возвращает информацию в следующем виде:
+      \begin{Verbatim}[tabsize=4]
+        Pizza: Margarita, thick dough, 450g, $18.00;
+      \end{Verbatim}
+      \item[--] public double calcFullPrice() -- публичный метод, возвращает полную цену в зависимости от типа теста (Thick: price * 1.5, Thin: price * 1.3), не принимает параметров;
+      \item[--] public DishResponse getInfo() -- публичный метод, возвращающий информацию о пицце для JSON формата;
+    \end{itemize}
+  \item[--] Собственные методы:
+    \begin{itemize}
+      \item[--] public void changeDough() -- публичный метод, меняет тип теста, не принимает параметров;
+      \item[--] public String cutInSlices() -- публичный метод, нарезает пиццу на куски, не принимает параметров, возвращает информацию в следующем виде:
+      \begin{Verbatim}[tabsize=4]
+        Cutting the pizza into slices...;
+      \end{Verbatim}
+    \end{itemize}
+\end{itemize}
+
+Класс <<Salad>>, наследованный от класса <<Dish>> содержит:
+\begin{itemize}
+  \item[--] Собственные поля:
+  \begin{itemize}
+    \item[--] public Dressing Dressing \{ get; set; \} = Dressing.OliveOil -- свойство, означающее тип заправки, по умолчанию OliveOil;
+  \end{itemize}
+  \item[--] Конструкторы:
+  \begin{itemize}
+    \item[--] public Salad() { super(); } -- публичный конструктор, необходимый для Hibernete;
+    \item[--] public Salad(String name) { super(name); } -- публичный конструктор, принимает название салата в качестве параметра;
+    \item[--] public Salad(String name, int weight, double price) { super(name, weight, price); } -- публичный конструктор, принимает в качестве параметров название, вес и цену салата;
+  \end{itemize}
+  \item[--] Переопределенные методы:
+  \begin{itemize}
+    \item[--] public String displayInfo() -- публичный метод, отображает информацию о салате (название, тип заправки, вес, цена), не принимает параметров, возвращает информацию в следующем виде:
+    \begin{Verbatim}[tabsize=4]
+      Salad: Caesar, OliveOil dressing, 250g, $12.60;
+    \end{Verbatim}
+    \item[--] public double calcFullPrice() -- публичный метод, возвращает полную цену в зависимости от типа заправки (OliveOil: price * 1.4, Mayonnaise: price * 1.3), не принимает параметров;
+    \item[--] public DishResponse getInfo() -- публичный метод, возвращающий информацию о салате для JSON формата;
+  \end{itemize}
+  \item[--] Собственные методы:
+  \begin{itemize}
+    \item[--] public void changeDressing() -- публичный метод, меняет тип заправки, не принимает параметров;
+    \item[--] public String tossWithDressing() -- публичный метод, перемешивает салат с заправкой, не принимает параметров, возвращает информацию в следующем виде:
+    \begin{Verbatim}[tabsize=4]
+      Tossing the salad with OliveOil...;
+    \end{Verbatim}
+  \end{itemize}
+\end{itemize}
+
+Класс <<Order>> содержит:
+\begin{itemize}
+  \item[--] Поля:
+    \begin{itemize}
+      \item[--] private UUID id -- поле, означающее уникальный идентификатор;
+      \item[--] private LocalDateTime createdAt = LocalDateTime.now() -- поле, означающее дату создания заказа, данные типа Дата;
+      \item[--] private double cost -- поле, стоимость заказа, формат с плавающей запятой;
+      \item[--] private List<OrderItem> items = new ArrayList<>() -- поле, содержащее список блюд в заказе.
+    \end{itemize}
+\end{itemize}
+
+Класс <<OrderItem>> содержит:
+\begin{itemize}
+  \item[--] Поля:
+    \begin{itemize}
+      \item[--] private UUID id -- поле, означающее уникальный идентификатор;
+      \item[--] private Order order = LocalDateTime.now() -- поле, означающее заказ, к которому относится блюдо;
+      \item[--] private Dish dish -- поле, означающее блюдо, доступное из меню;
+      \item[--] private int quantity -- поле, означающее количство блюда.
+    \end{itemize}
+\end{itemize}
+
+\pagebreak
+Диаграмма классов сущностей представлена на рисунке 1.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.83\linewidth]{img/uml-1.png} \\
+  Рисунок 1 – Диаграмма классов сущностей
+\end{figure}
+
+\pagebreak
+Разработаны серверные и клиентское приложение в виде веб-интерфейса. Серверное приложение содержит подключение к базе данных, конфигурацию моделей и контроллеры.
+
+Подключение к базе даныых Postgres происходит с помощью следующих настроек подключения:
+\begin{Verbatim}[tabsize=4]
+spring.datasource.url=jdbc:postgresql://localhost:5432/restaurant_db
+spring.datasource.username=root
+spring.datasource.password=root
+\end{Verbatim}
+
+Для того, чтобы пользоватсья CRUD функциями у сущностей необходимо создать репозиторий. Например, для сущности <<Pizza>> репозиторий выглядит следующим образом:
+\begin{Verbatim}[tabsize=4]
+public interface PizzaRepository 
+        extends JpaRepository<Pizza, UUID> {}
+\end{Verbatim}
+
+Репозитории для остальных сущностей выполняются аналогичным способом и содержат аналогичные методы.
+
+Следующим шагом идет создание сервисов для управления данными, получаемых из репозитория. Например, <<PizzaService>> содержит следющие методы:
+\begin{itemize}
+  \item[--]public Pizza createPizza(Pizza pizza) -- метод, который создает новую запись о пицце:
+  \begin{Verbatim}[tabsize=4]
+    return pizzaRepository.save(pizza);
+  \end{Verbatim}
+  \item[--]public List<Pizza> getAllPizzas() -- метод, возвращающий весь список пицц, хранящаеся в базе данных:
+  \begin{Verbatim}[tabsize=4]
+    return pizzaRepository.findAll();
+  \end{Verbatim}
+  \item[--] public Pizza getPizzaById(UUID id) -- метод, возвращающий отдельную запись о пицце по уникальному идентификатору:
+  \begin{Verbatim}[tabsize=4]
+    return pizzaRepository.findById(id);
+  \end{Verbatim}
+  \item[--] public Pizza updatePizza(UUID id, Pizza pizzaDetails) -- метод, который обновляет записи о пицце по уникальному идентификатору:
+  \begin{Verbatim}[tabsize=4]
+    Pizza existingPizza = getPizzaById(id);
+    existingPizza.setName(pizzaDetails.getName());
+    existingPizza.setWeight(pizzaDetails.getWeight());
+    existingPizza.setPrice(pizzaDetails.getPrice());
+    existingPizza.setDough(pizzaDetails.getDough());
+    return pizzaRepository.save(existingPizza);
+  \end{Verbatim}
+  \item[--] public void deletePizza(UUID id) -- метод, удаляющий запись о пицце по уникальному идентификатору:
+  \begin{Verbatim}[tabsize=4]
+    pizzaRepository.deleteById(id);
+  \end{Verbatim}
+  \item[--] public double calculatePizzaPrice(UUID id) -- метод, возвращающий полную стоимость пиццы по уникальному идентификатору;
+  \item[--] public Pizza toggleDough(UUID id) -- метод, меняющий тип теста пиццы по уникальному идентификатору;
+  \item[--] public String getPizzaDisplayInfo(UUID id) -- метод, возвращающий полное описание записи пиццы по уникальному идентификатору;
+  \item[--] public String cutPizza(UUID id) -- метод, возвращающий сообщение о нарезании пиццы на кусочки по уникальному идентификатору.
+\end{itemize}
+
+Сервисы для остальных сущностей выполняются аналогичным способом и содержат аналогичные методы.
+
+Далее необходимо создать контроллер, который отправляет ответы на запросы клиента, используя методы, содержащиеся в сервисах. Например, <<PizzaController>> содержит следющие методы:
+\begin{itemize}
+  \item[--] public Pizza create(@RequestBody Pizza pizza) -- метод, который создает новую запись о пицце;
+  \item[--] public List<Pizza> getAll() -- метод, возвращающий весь список пицц, хранящаеся в базе данных;
+  \item[--] public Pizza getOne(@PathVariable UUID id) -- метод, возвращающий отдельную запись о пицце по уникальному идентификатору;
+  \item[--] public Pizza update(@PathVariable UUID id, \\ @RequestBody Pizza pizzaDetails) --  метод, который обновляет записи о пицце по уникальному идентификатору;
+  \item[--] public void delete(@PathVariable UUID id) -- метод, удаляющий запись о пицце по уникальному идентификатору;
+  \item[--] public String cut(@PathVariable UUID id) -- метод, возвращающий сообщение о нарезании пиццы на кусочки по уникальному идентификатору;
+  \item[--] ppublic String getInfo(@PathVariable UUID id) -- метод, возвращающий полное описание записи пиццы по уникальному идентификатору;
+  \item[--] public double getPrice(@PathVariable UUID id) -- метод, возвращающий полную стоимость пиццы по уникальному идентификатору;
+  \item[--] public Pizza changeDough(@PathVariable UUID id) -- метод, меняющий тип теста пиццы по уникальному идентификатору.
+\end{itemize}
+
+Контороллеры для остальных сущностей выполняются аналогичным способом и содержат аналогичные методы.
+
+\pagebreak
+Диаграмма классов репозиториев, сервисов, контроллеров представлена на рисунке 2.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\linewidth]{img/uml-2.png} \\
+  Рисунок 2 – Диаграмма классов репозиториев, сервисов, контроллеров
+\end{figure}
+
+\pagebreak
+Разработан веб-интерфейс для взаимодействия с WEB API, экранные формы которого представлены на рисунках 3, 4, 5, 6.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/form-1.png} \\
+  Рисунок 3 – Страница со списком блюд, корзиной, заказов
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/form-2.png} \\
+  Рисунок 4 – Страница отдельного заказа
+\end{figure}
+
+\pagebreak
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{img/form-3.png} \\
+  Рисунок 5 – Форма со списком блюд
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{img/form-4.png} \\
+  Рисунок 6 – Форма редактирования блюда
+\end{figure}
+
 \section*{\hspace{12.5mm}Вывод}
-В ходе выполнения лабораторной работы была разработана и реализована иерархия классов, моделирующая управление ассортиментом блюд в заведении общественного питания. Разработана база данных и веб-приложение, демонстрирующее работу системы.
+В ходе выполнения лабораторной работы была разработана и реализована иерархия классов, моделирующая управление ассортиментом блюд, создание закалв в заведении общественного питания. Разработана база данных и веб-приложение, демонстрирующее работу системы.
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  8 MAY 2026 02:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.7)  19 MAY 2026 03:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -415,25 +415,78 @@ LaTeX Font Info:    External font `cmex7' loaded for size
 (Font)              <7> on input line 43.
  [1
 
-{d:/Programs/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{d:/Programs/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] [2] (./РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 3.aux)
+{d:/Programs/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{d:/Programs/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] [2]
+Overfull \hbox (5.39966pt too wide) in paragraph at lines 98--99
+[]\T2A/cmr/m/n/14.4 public Pizza(String name, int weight, double price)  super(name, weight,
+ []
+
+[3]
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 103.
+ (d:/Programs/texlive/2025/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+) [4]
+Overfull \hbox (5.97276pt too wide) in paragraph at lines 129--130
+[]\T2A/cmr/m/n/14.4 public Salad(String name, int weight, double price)  super(name, weight,
+ []
+
+[5] [6]
+<img/uml-1.png, id=24, 751.80875pt x 1012.78375pt>
+File: img/uml-1.png Graphic file (type png)
+<use img/uml-1.png>
+Package pdftex.def Info: img/uml-1.png  used on input line 176.
+(pdftex.def)             Requested size: 401.46928pt x 540.83719pt.
+ [7 <./img/uml-1.png>]
+Overfull \hbox (7.04427pt too wide) in paragraph at lines 181--182
+[]\T2A/cmr/m/n/14.4 Разработаны сер-вер-ные и кли-ент-ское при-ло-же-ние в ви-де веб-интерфейса.
+ []
+
+[8] [9] [10]
+<img/uml-2.png, id=39, 1207.51125pt x 735.74875pt>
+File: img/uml-2.png Graphic file (type png)
+<use img/uml-2.png>
+Package pdftex.def Info: img/uml-2.png  used on input line 252.
+(pdftex.def)             Requested size: 483.69687pt x 294.72089pt.
+ [11 <./img/uml-2.png>]
+<img/form-1.png, id=44, 779.16093pt x 627.09282pt>
+File: img/form-1.png Graphic file (type png)
+<use img/form-1.png>
+Package pdftex.def Info: img/form-1.png  used on input line 261.
+(pdftex.def)             Requested size: 386.95897pt x 311.43097pt.
+<img/form-2.png, id=46, 776.9025pt x 315.42844pt>
+File: img/form-2.png Graphic file (type png)
+<use img/form-2.png>
+Package pdftex.def Info: img/form-2.png  used on input line 267.
+(pdftex.def)             Requested size: 386.95897pt x 157.1122pt.
+ [12 <./img/form-1.png> <./img/form-2.png>]
+<img/form-3.png, id=52, 395.97937pt x 290.58563pt>
+File: img/form-3.png Graphic file (type png)
+<use img/form-3.png>
+Package pdftex.def Info: img/form-3.png  used on input line 274.
+(pdftex.def)             Requested size: 241.84843pt x 177.47867pt.
+<img/form-4.png, id=53, 391.4625pt x 243.91125pt>
+File: img/form-4.png Graphic file (type png)
+<use img/form-4.png>
+Package pdftex.def Info: img/form-4.png  used on input line 280.
+(pdftex.def)             Requested size: 241.84843pt x 150.6912pt.
+ [13 <./img/form-3.png> <./img/form-4.png>] (./РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 3.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4665 strings out of 467538
- 77920 string characters out of 5419036
- 492791 words of memory out of 5000000
- 33549 multiletter control sequences out of 15000+600000
- 631477 words of font info for 48 fonts, out of 8000000 for 9000
+ 4734 strings out of 467538
+ 79634 string characters out of 5419036
+ 495793 words of memory out of 5000000
+ 33614 multiletter control sequences out of 15000+600000
+ 631787 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,7n,65p,705b,204s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
-Output written on РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 3.pdf (2 pages, 38358 bytes).
+ 57i,7n,65p,705b,403s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programs/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on РР’РўР±-2301-05-00_РњР°РєР°СЂРѕРІРЎРђ_Р›Р 3.pdf (13 pages, 242979 bytes).
 PDF statistics:
- 22 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
