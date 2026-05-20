@@ -169,7 +169,59 @@
     \end{itemize}
 \end{itemize}
 
-\pagebreak
+Для описания моделей Hibernete используются следущие нотации:
+\begin{itemize}
+  \item[--] @Entity -- используется для описания сущности:
+  \begin{Verbatim}[tabsize=4]
+  @Entity
+  public abstract class Dish { ... }
+  \end{Verbatim}
+  \item[--] @Table(name = "dishes") -- используется для задания имени таблицы сущности в базе данных:
+  \begin{Verbatim}[tabsize=4]
+  @Table(name = "dishes")
+  public abstract class Dish { ... }
+  \end{Verbatim}
+  \item[--] @Inheritance(strategy = InheritanceType.JOINED) -- задает стратегию наследования. Общие поля родительского класса в одной таблице, а специальные поля наследников в отдельных таблицах, связанных по идентификатору:
+  \begin{Verbatim}[tabsize=4]
+  @Inheritance(strategy = InheritanceType.JOINED)
+  public abstract class Dish { ... }
+  \end{Verbatim}
+  \item[--] @PrimaryKeyJoinColumn(name = "dish\_id") -- используется в наследниках и показывает, что их первичный ключ одновременно является внешним ключом на запись в родительской таблице:
+  \begin{Verbatim}[tabsize=4]
+  @PrimaryKeyJoinColumn(name = "dish_id")
+  public class Pizza extends Dish { ... }
+  \end{Verbatim}
+  \item[--] @OnDelete(action = OnDeleteAction.CASCADE) -- задает правила удаления записей в связанных таблицах:
+  \begin{Verbatim}[tabsize=4]
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  public class Pizza extends Dish { ... }
+  \end{Verbatim}
+  \item[--] @Id и @GeneratedValue -- используеются для создания уникального сгенерированного идентифифкатора:
+  \begin{Verbatim}[tabsize=4]
+  @Id
+  @GeneratedValue
+  private UUID id;
+  \end{Verbatim}
+  \item[--] @ManyToOne() и @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true) -- создают связь один ко многоим между сущностями:
+  \begin{Verbatim}[tabsize=4]
+  public class Order {
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> items = new ArrayList<>();
+  }
+  public class OrderItem {
+    @ManyToOne()
+    private Order order;
+  }
+  \end{Verbatim}
+  \item[--] @JoinColumn(name = "order\_id") -- используется для указания по какому поля связывать сущности:
+  \begin{Verbatim}[tabsize=4]
+  public class OrderItem {
+    @JoinColumn(name = "order_id")
+    private Order order;
+  }
+  \end{Verbatim}
+\end{itemize}
+
 Диаграмма классов сущностей представлена на рисунке 1.
 \begin{figure}[ht]
   \centering
